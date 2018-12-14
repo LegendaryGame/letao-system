@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <el-container>
-      <el-aside width="200px">
+      <el-aside :width="collapse?auto:width">
         <div class="profile">
           <div class="avatar">
             <img
@@ -19,8 +19,10 @@
           background-color="#545c64"
           text-color="#fff"
           active-text-color="#ffd04b"
+          :collapse="collapse"
+          :router='true'
         >
-        <el-menu-item index="1">
+          <el-menu-item index="user">
             <i class="fa fa-user"></i>
             <span slot="title">用户管理</span>
           </el-menu-item>
@@ -41,8 +43,18 @@
         </el-menu>
       </el-aside>
       <el-container>
-        <el-header>Header</el-header>
-        <el-main>Main</el-main>
+        <el-header>
+          <a
+            href="javaScript:;"
+            @click="collapse = !collapse"
+            class="myicon myicon-menu toggle-btn"
+          ></a>
+          <div class="system-title">乐淘后台管理系统</div>
+          <div class="logout"><span>退出</span></div>
+        </el-header>
+        <el-main style="backgroundColor:#666">
+          <router-view></router-view>
+        </el-main>
       </el-container>
     </el-container>
   </div>
@@ -51,7 +63,11 @@
 <script>
 export default {
   data () {
-    return {}
+    return {
+      auto: 'auto',
+      width: '200px',
+      collapse: false
+    }
   },
   methods: {
     handleOpen (key, keyPath) {
@@ -120,13 +136,12 @@ export default {
     font-size: 28px;
     color: white;
   }
-  .welcome {
-    color: white;
-    margin-right: 20px;
+  .fa {
+    width: 18px;
+    display: line-block;
   }
-  .fa{
-      width: 18px;
-      display: line-block;
+  .logout {
+    color: #fff;
   }
 }
 </style>
