@@ -7,9 +7,24 @@ import App from './App'
 import router from './router'
 
 import '@/styles/index.scss'
+
+import {isRootLogin} from '@/api'
+
 Vue.use(ElementUI)
 
 Vue.config.productionTip = false
+/* 设置导航守卫 */
+router.beforeEach((to, from, next) => {
+  isRootLogin().then(res => {
+    if (res.success || to.path === '/login') {
+      next()
+    } else {
+      next({path: '/login'})
+    }
+    // console.log(res)
+  })
+  next()
+})
 
 /* eslint-disable no-new */
 new Vue({

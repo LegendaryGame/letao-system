@@ -61,7 +61,7 @@ export default {
   },
   created () {
     getQueryUser({ page: this.page, pageSize: this.pageSize }).then(res => {
-      console.log(res)
+      // console.log(res)
       this.userList = res.rows
     })
   },

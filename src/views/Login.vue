@@ -32,6 +32,7 @@
 </template>
 
 <script>
+import {eLogin} from '@/api'
 export default{
   data () {
     return {
@@ -48,8 +49,36 @@ export default{
     }
   },
   methods: {
-    submitForm (pa) {
-
+    submitForm (formName) {
+      this.$refs[formName].validate((valid) => {
+        if (valid) {
+          eLogin(this.loginForm).then(res => {
+            // console.log(res)
+            if (res.success) {
+              this.$message({
+                message: '登录成功',
+                type: 'success'
+              })
+            //   this.$router.push({name: 'User'})
+            } else if (res.error === 1000) {
+              this.$message({
+                message: '用户名错误',
+                type: 'error'
+              })
+            } else if (res.error === 1001) {
+              this.$message({
+                message: '密码错误',
+                type: 'error'
+              })
+            }
+          })
+        } else {
+          this.$message({
+            message: '连接超时,请检查您的网络问题...',
+            type: 'error'
+          })
+        }
+      })
     }
   }
 }

@@ -23,4 +23,18 @@ export const updateUserStatus = (pa) => {
     })
 }
 
+// 员工登录
+export const eLogin = (pa) => {
+  return axios.post('/employee/employeeLogin', pa)
+    .then(res => {
+      return res.data
+    })
+}
+
 // 判断管理员登录
+export const isRootLogin = () => {
+  return axios.get('/employee/checkRootLogin')
+    .then(res => {
+      return res.data
+    })
+}
