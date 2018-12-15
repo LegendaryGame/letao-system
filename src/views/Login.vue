@@ -59,7 +59,7 @@ export default{
                 message: '登录成功',
                 type: 'success'
               })
-            //   this.$router.push({name: 'User'})
+              this.$router.push({name: 'User'})
             } else if (res.error === 1000) {
               this.$message({
                 message: '用户名错误',
