@@ -32,11 +32,11 @@
               <span>分类管理</span>
             </template>
             <el-menu-item-group>
-              <el-menu-item index="2-1">选项1</el-menu-item>
-              <el-menu-item index="2-2">选项2</el-menu-item>
+              <el-menu-item index="categoryFirst">一级分类管理</el-menu-item>
+              <el-menu-item index="categorySecond">二级分类管理</el-menu-item>
             </el-menu-item-group>
           </el-submenu>
-          <el-menu-item index="4">
+          <el-menu-item index="productList">
             <i class="fa fa-product-hunt"></i>
             <span slot="title">商品管理</span>
           </el-menu-item>
